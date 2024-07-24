@@ -19,7 +19,7 @@ pipeline {
         stage('Publish or Build') {
             steps {
                 script {
-                    if (env.BRANCH_NAME == 'main') {
+                    if (env.BRANCH_NAME == 'master') {
                         sh 'docker run -d -p 82:80 -v $WORKSPACE:/var/www/html ${env.DOCKER_IMAGE}:${env.BUILD_ID}'
                     } else if (env.BRANCH_NAME == 'develop') {
                         echo 'Build successful, not publishing'
